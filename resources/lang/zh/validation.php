@@ -105,6 +105,21 @@ return [
         ],
         'name' => [
             'required' => '名称不能为空',
+            'string' => '名称必须是字符串',
+            'max' => '名称不能大于 :max 个字符'
+        ],
+        'email' => [
+            'required' => '邮箱不能为空',
+            'string' => '邮箱必须是字符',
+            'email' => '邮箱格式不正确',
+            'max' => '邮箱不能大于 :max 个字符',
+            'unique' => '邮箱已存在'
+        ],
+        'password' => [
+            'required' => '密码不能为空',
+            'string' => '密码必须是字符',
+            'min' => '密码不能小于 :min 个字符',
+            'confirmed' => '两次密码输入不一致',
         ]
     ],
 
@@ -120,7 +135,6 @@ return [
     */
 
     'attributes' => [
-        'title' => '标题',
     ],
 
 ];
