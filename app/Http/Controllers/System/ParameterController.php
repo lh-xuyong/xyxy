@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\System;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class Parameter extends Controller
+class ParameterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,6 @@ class Parameter extends Controller
      */
     public function index()
     {
-        //
         return view('system.parameter.index');
     }
 
