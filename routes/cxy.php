@@ -1,9 +1,11 @@
 <?php
 
-Route::get('/cxy',function(){
-    return 'Hi! I am your father';
+// api
+Route::prefix('api')->group(function (){
+    Route::get('parameters','Api\CxyController@parameters');
 });
 
+// view
 Route::prefix('system')->group(function (){
-    Route::get('parameters','Parameter@index');
+    Route::get('parameters','System\ParameterController@index');
 });
