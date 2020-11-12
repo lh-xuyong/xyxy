@@ -26,6 +26,7 @@
     @include('layouts.breadcrumbs')
     <div class="Hui-article">
         @yield('content')
+
     </div>
 </section>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\System;
 
+use App\Model\Parameter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,10 @@ class ParameterController extends Controller
      */
     public function index()
     {
-        return view('system.parameter.index');
+        $parameters = Parameter::paginate();
+        return view('system.parameters.index',[
+            'parameters' => $parameters,
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class ParameterController extends Controller
      */
     public function create()
     {
-        //
+        return view('system.parameters.create');
     }
 
     /**
@@ -57,7 +61,10 @@ class ParameterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $parameter = Parameter::findOrFail($id);
+        return view('system.parameters.edit',[
+            'parameter' => $parameter,
+        ]);
     }
 
     /**
@@ -69,7 +76,24 @@ class ParameterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+            'status' => 'required',
+            'option_list' => 'required',
+        ]);
+        $parameter = Parameter::findOrFail($id);
+        $parameter->name = $request->name;
+        $parameter->status = $request->status;
+        $ops = explode(',', trim($request->option_list,","));
+        $option_list = [];
+        foreach ($ops as $val){
+            $target = explode(":",$val);
+            $option_list[$target[0]] = $target[1];
+        }
+        $parameter->option_list = $option_list;
+        $parameter->description = $request->description;
+        $parameter->update();
+        return redirect('/system/parameters/');
     }
 
     /**
