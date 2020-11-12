@@ -5,6 +5,7 @@ namespace App\Http\Controllers\System;
 use App\Model\Parameter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Exception;
 
 class ParameterController extends Controller
 {
@@ -16,7 +17,7 @@ class ParameterController extends Controller
     public function index()
     {
         $parameters = Parameter::paginate();
-        return view('system.parameters.index',[
+        return view('system.parameters.index', [
             'parameters' => $parameters,
         ]);
     }
@@ -39,7 +40,31 @@ class ParameterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:parameters|max:255',
+            'status' => 'required',
+            'option_list' => 'required',
+        ]);
+        $parameter = new Parameter();
+        $parameter->name = $request->name;
+        $parameter->status = $request->status;
+        $parameter->is_system = 1;
+        $ops = explode(',', trim($request->option_list, ","));
+
+        $option_list = [];
+        try {
+            foreach ($ops as $val) {
+                $target = explode(":", $val);
+                $option_list[$target[0]] = $target[1];
+            }
+        } catch (Exception $e) {
+            return redirect('system/parameters/create');
+        };
+
+        $parameter->option_list = $option_list;
+        $parameter->description = $request->description;
+        $parameter->save();
+        return redirect('/system/parameters', 302);
     }
 
     /**
@@ -50,7 +75,8 @@ class ParameterController extends Controller
      */
     public function show($id)
     {
-        //
+        $parameter = Parameter::findOrFail($id);
+        return view('system.parameters/show');
     }
 
     /**
@@ -62,7 +88,7 @@ class ParameterController extends Controller
     public function edit($id)
     {
         $parameter = Parameter::findOrFail($id);
-        return view('system.parameters.edit',[
+        return view('system.parameters.edit', [
             'parameter' => $parameter,
         ]);
     }
@@ -84,12 +110,20 @@ class ParameterController extends Controller
         $parameter = Parameter::findOrFail($id);
         $parameter->name = $request->name;
         $parameter->status = $request->status;
-        $ops = explode(',', trim($request->option_list,","));
-        $option_list = [];
-        foreach ($ops as $val){
-            $target = explode(":",$val);
-            $option_list[$target[0]] = $target[1];
+        $ops = explode(',', trim($request->option_list, ","));
+        if (count($ops) === 0) {
+            return redirect('system/parameters/');
         }
+        $option_list = [];
+        try {
+            foreach ($ops as $val) {
+                $target = explode(":", $val);
+                $option_list[$target[0]] = $target[1];
+            }
+        } catch (Exception $e) {
+            return redirect('system/parameters/create');
+        };
+
         $parameter->option_list = $option_list;
         $parameter->description = $request->description;
         $parameter->update();
@@ -104,6 +138,8 @@ class ParameterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $parameter = Parameter::findOrFail($id);
+        $parameter->delete();
+        return redirect('system/parameters', 302);
     }
 }

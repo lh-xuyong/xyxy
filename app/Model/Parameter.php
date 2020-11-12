@@ -28,7 +28,8 @@ class Parameter extends Model
 
     public function getStatusAttribute($status)
     {
-        return $this->option_list[$status];
+        $parameter = Parameter::where('name', "status")->FirstOrFail();
+        return $parameter->option_list[$status];
     }
 
 //    public function getOptionList()
