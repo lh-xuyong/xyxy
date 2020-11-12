@@ -12,4 +12,7 @@ Route::prefix('system')->group(function (){
     Route::get('parameters/create','System\ParameterController@create');
     Route::get('parameters/edit/{id}','System\ParameterController@edit');
     Route::put('parameters/edit/{id}','System\ParameterController@update');
+    Route::post('parameters/store','System\ParameterController@store');
+    Route::delete('parameters/delete/{id}', 'System\ParameterController@destroy');
+    Route::get('parameters/show/{id}', 'System\ParameterController@show');
 });
