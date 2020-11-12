@@ -2223,7 +2223,7 @@
 	/**
 	 * Get an array of column indexes that match a given property
 	 *  @param {object} oSettings dataTables settings object
-	 *  @param {string} sParam Parameter in aoColumns to look for - typically
+	 *  @param {string} sParam ParameterController in aoColumns to look for - typically
 	 *    bVisible or bSearchable
 	 *  @returns {array} Array of indexes with matched properties
 	 *  @memberof DataTable#oApi
