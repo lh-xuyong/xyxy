@@ -6,6 +6,7 @@ use App\Model\Parameter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Exception;
+use Illuminate\Support\Facades\Input;
 
 class ParameterController extends Controller
 {
@@ -16,6 +17,13 @@ class ParameterController extends Controller
      */
     public function index()
     {
+        if(request()->method() == 'POST'){
+            $query = request()->keywords;
+            $parameters = Parameter::where("name", "like","%$query%")->paginate();
+            return view('system.parameters.index', [
+                'parameters' => $parameters,
+            ]);
+        }
         $parameters = Parameter::paginate();
         return view('system.parameters.index', [
             'parameters' => $parameters,

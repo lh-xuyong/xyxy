@@ -5,9 +5,12 @@
 @section('content')
 <article class="cl pd-20">
     <div class="text-c">
-        <input type="text" class="input-text" style="width:250px" placeholder="输入参数名称" id="" name="">
-        <button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜参数
-        </button>
+        <form action="{{url('system/parameters/')}}" method="POST">
+            {{ csrf_field() }}
+            <input type="text" class="input-text" style="width:250px" placeholder="输入参数名称" id="" name="keywords">
+            <button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜参数
+            </button>
+        </form>
     </div>
     <div class="cl pd-5 bg-1 bk-gray mt-20"><span class="l"><a href="{{ url('system/parameters/delete') }}" class="btn btn-danger radius"><i
                         class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="{{ url('system/parameters/create') }}" class="btn btn-primary radius"><i
