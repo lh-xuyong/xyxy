@@ -4,8 +4,93 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b7904d07d1e1765a0a199aa11d6301a3",
+    "content-hash": "21c05d4cec55a097a5be7e1979366e27",
     "packages": [
+        {
+            "name": "barryvdh/laravel-debugbar",
+            "version": "v3.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-debugbar.git",
+                "reference": "91ee8b3acf0d72a4937f4855bd245acbda9910ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/91ee8b3acf0d72a4937f4855bd245acbda9910ac",
+                "reference": "91ee8b3acf0d72a4937f4855bd245acbda9910ac",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "illuminate/routing": "^5.5|^6|^7",
+                "illuminate/session": "^5.5|^6|^7",
+                "illuminate/support": "^5.5|^6|^7",
+                "maximebf/debugbar": "^1.16.3",
+                "php": ">=7.0",
+                "symfony/debug": "^3|^4|^5",
+                "symfony/finder": "^3|^4|^5"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.5|^4.0|^5.0",
+                "phpunit/phpunit": "^6.0|^7.0|^8.5|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Barryvdh\\Debugbar\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Debugbar": "Barryvdh\\Debugbar\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\Debugbar\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "PHP Debugbar integration for Laravel",
+            "keywords": [
+                "debug",
+                "debugbar",
+                "laravel",
+                "profiler",
+                "webprofiler"
+            ],
+            "support": {
+                "issues": "https://github.com/barryvdh/laravel-debugbar/issues",
+                "source": "https://github.com/barryvdh/laravel-debugbar/tree/3.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/barryvdh",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-08-30T07:08:17+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",
@@ -239,16 +324,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.23",
+            "version": "2.1.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "5fa792ad1853ae2bc60528dd3e5cbf4542d3c1df"
+                "reference": "ca90a3291eee1538cd48ff25163240695bd95448"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/5fa792ad1853ae2bc60528dd3e5cbf4542d3c1df",
-                "reference": "5fa792ad1853ae2bc60528dd3e5cbf4542d3c1df",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/ca90a3291eee1538cd48ff25163240695bd95448",
+                "reference": "ca90a3291eee1538cd48ff25163240695bd95448",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -301,9 +386,15 @@
             ],
             "support": {
                 "issues": "https://github.com/egulias/EmailValidator/issues",
-                "source": "https://github.com/egulias/EmailValidator/tree/2.1.23"
+                "source": "https://github.com/egulias/EmailValidator/tree/2.1.24"
             },
-            "time": "2020-10-31T20:37:35+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/egulias",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-11-14T15:56:27+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -985,6 +1076,77 @@
                 }
             ],
             "time": "2020-10-18T11:50:25+00:00"
+        },
+        {
+            "name": "maximebf/debugbar",
+            "version": "v1.16.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maximebf/php-debugbar.git",
+                "reference": "1a1605b8e9bacb34cc0c6278206d699772e1d372"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/1a1605b8e9bacb34cc0c6278206d699772e1d372",
+                "reference": "1a1605b8e9bacb34cc0c6278206d699772e1d372",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": "^7.1",
+                "psr/log": "^1.0",
+                "symfony/var-dumper": "^2.6|^3|^4|^5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5"
+            },
+            "suggest": {
+                "kriswallsmith/assetic": "The best way to manage assets",
+                "monolog/monolog": "Log using Monolog",
+                "predis/predis": "Redis storage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.16-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DebugBar\\": "src/DebugBar/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxime Bouroumeau-Fuseau",
+                    "email": "maxime.bouroumeau@gmail.com",
+                    "homepage": "http://maximebf.com"
+                },
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Debug bar in the browser for php application",
+            "homepage": "https://github.com/maximebf/php-debugbar",
+            "keywords": [
+                "debug",
+                "debugbar"
+            ],
+            "support": {
+                "issues": "https://github.com/maximebf/php-debugbar/issues",
+                "source": "https://github.com/maximebf/php-debugbar/tree/v1.16.3"
+            },
+            "time": "2020-05-06T07:06:27+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -3981,16 +4143,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.10.1",
+            "version": "1.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "969b211f9a51aa1f6c01d1d2aef56d3bd91598e5"
+                "reference": "776f831124e9c62e1a2c601ecc52e776d8bb7220"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/969b211f9a51aa1f6c01d1d2aef56d3bd91598e5",
-                "reference": "969b211f9a51aa1f6c01d1d2aef56d3bd91598e5",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/776f831124e9c62e1a2c601ecc52e776d8bb7220",
+                "reference": "776f831124e9c62e1a2c601ecc52e776d8bb7220",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4033,7 +4195,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.x"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.10.2"
             },
             "funding": [
                 {
@@ -4041,7 +4203,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-29T13:22:24+00:00"
+            "time": "2020-11-13T09:40:50+00:00"
         },
         {
             "name": "phar-io/manifest",
