@@ -25,6 +25,7 @@ class ParameterController extends Controller
             ]);
         }
         $parameters = Parameter::paginate();
+        dump($parameters);die;
         return view('system.parameters.index', [
             'parameters' => $parameters,
         ]);
