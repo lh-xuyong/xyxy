@@ -17,3 +17,4 @@ Route::prefix('system')->group(function (){
     Route::get('parameters/show/{id}', 'System\ParameterController@show');
     Route::get('parameters/show/{id}', 'System\ParameterController@show');
 });
+
