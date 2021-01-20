@@ -2,28 +2,36 @@
 @section('content')
     <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 管理员管理  <span class="c-gray en">&gt;</span> 管理员列表  <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
     <div class="page-container">
-        <div class="text-c"> 日期范围：
-            <input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class="input-text Wdate" style="width:120px;">
-            -
-            <input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" class="input-text Wdate" style="width:120px;">
-            <input type="text" class="input-text" style="width:250px" placeholder="输入会员名称、电话、邮箱" id="" name="">
-            <button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜管理员</button>
+{{--        <div class="text-c"> 日期范围：--}}
+{{--            <input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class="input-text Wdate" style="width:120px;">--}}
+{{--            ---}}
+{{--            <input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" class="input-text Wdate" style="width:120px;">--}}
+{{--            <input type="text" class="input-text" style="width:250px" placeholder="输入会员名称、电话、邮箱" id="" name="">--}}
+{{--            <button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜管理员</button>--}}
+{{--        </div>--}}
+
+
+        <div class="text-c">
+            <input class="btn btn-primary radius" type="button" value="导入" onclick="devops_import('<strong>导入工单(请先下载模板填充后上传)</strong>','/devops/import','500','250')">
+
+            <input class="btn btn-success radius" type="button" value="导出">
         </div>
+
         <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加用户','/admin/add','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> <span class="r">共有数据：<strong>88</strong> 条</span> </div>
         <div class="mt-20">
             <table class="table table-border table-bordered table-hover table-bg table-sort">
                 <thead>
                 <tr class="text-c">
                     <th width=""><input type="checkbox" name="" value=""></th>
-                    <th width="">ID</th>
-                    <th width="">用户名</th>
-                    <th width="">电子邮箱</th>
-                    <th width="">手机</th>
-                    <th width="">部门</th>
-                    <th width="">岗位</th>
-                    <th width="">备注</th>
-                    <th width="">状态</th>
-                    <th width="">操作</th>
+                    <th width="">1</th>
+                    <th width="">2</th>
+                    <th width="">3</th>
+                    <th width="">4</th>
+                    <th width="">5</th>
+                    <th width="">6</th>
+                    <th width="">6</th>
+                    <th width="">8</th>
+                    <th width="">9</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -92,6 +100,11 @@
             });
 
         });
+        /*import*/
+        function devops_import(title,url,w,h){
+            layer_show(title,url,w,h);
+        }
+
         /*用户-添加*/
         function member_add(title,url,w,h){
             layer_show(title,url,w,h);

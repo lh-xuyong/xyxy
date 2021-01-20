@@ -2,34 +2,42 @@
 @section('content')
 	<article class="page-container">
 	<form action="" method="post" class="form form-horizontal" enctype="multipart/form-data" id="form-member-add">
-		<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+		{{csrf_field()}}
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>用户名：</label>
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>管理员：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="text" class="input-text" value="" placeholder="" id="username" name="username">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>初始密码：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="password" class="input-text" autocomplete="off" value="" placeholder="密码" id="pass" name="pass">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>确认密码：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="password" class="input-text" autocomplete="off"  placeholder="确认新密码" id="confirm_pass" name="confirm_pass">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>性别：</label>
 			<div class="formControls col-xs-8 col-sm-9 skin-minimal">
 				<div class="radio-box">
-					<input name="sex" type="radio" id="sex-1" checked>
+					<input name="sex" type="radio" id="sex-1" value="1" checked>
 					<label for="sex-1">男</label>
 				</div>
 				<div class="radio-box">
-					<input type="radio" id="sex-2" name="sex">
+					<input type="radio" id="sex-2" name="sex" value="2">
 					<label for="sex-2">女</label>
-				</div>
-				<div class="radio-box">
-					<input type="radio" id="sex-3" name="sex">
-					<label for="sex-3">保密</label>
 				</div>
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>手机：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="mobile" name="mobile">
+				<input type="text" class="input-text" value="" placeholder="" id="tel" name="tel">
 			</div>
 		</div>
 		<div class="row cl">
@@ -38,32 +46,46 @@
 				<input type="text" class="input-text" placeholder="@" name="email" id="email">
 			</div>
 		</div>
+
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3">附件：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="btn-upload form-group">
-				<input class="input-text upload-url" type="text" name="uploadfile" id="uploadfile" readonly nullmsg="请添加附件！" style="width:200px">
-				<a href="javascript:void();" class="btn btn-primary radius upload-btn"><i class="Hui-iconfont">&#xe642;</i> 浏览文件</a>
-				<input type="file" multiple name="file-2" class="input-file">
-				</span> </div>
+			<label class="form-label col-xs-4 col-sm-3">部门：</label>
+			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
+			<select class="select valid" name="adminRole" size="1" aria-required="true" aria-invalid="false">
+				<option value="0">洪泽</option>
+				<option value="1">涟水</option>
+			</select><label id="adminRole-error" class="error valid" for="adminRole" style="display: block;"></label>
+			</span> </div>
 		</div>
+
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-3">所在城市：</label>
-			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
-				<select class="select" size="1" name="city">
-					<option value="" selected>请选择城市</option>
-					<option value="1">北京</option>
-					<option value="2">上海</option>
-					<option value="3">广州</option>
-				</select>
-				</span> </div>
+			<label class="form-label col-xs-4 col-sm-3">是否组长：</label>
+			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
+			<select class="select valid" name="adminRole" size="1" aria-required="true" aria-invalid="false">
+				<option value="0">否</option>
+				<option value="1">是</option>
+
+			</select><label id="adminRole-error" class="error valid" for="adminRole" style="display: block;"></label>
+			</span> </div>
 		</div>
+{{--		<div class="row cl">--}}
+{{--			<label class="form-label col-xs-4 col-sm-3">角色：</label>--}}
+{{--			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">--}}
+{{--			<select class="select" name="adminRole" size="1">--}}
+{{--				<option value="0">超级管理员</option>--}}
+{{--				<option value="1">总编</option>--}}
+{{--				<option value="2">栏目主辑</option>--}}
+{{--				<option value="3">栏目编辑</option>--}}
+{{--			</select>--}}
+{{--			</span> </div>--}}
+{{--		</div>--}}
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3">备注：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<textarea name="beizhu" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" onKeyUp="$.Huitextarealength(this,100)"></textarea>
+				<textarea name="remark" cols="" rows="" class="textarea"  placeholder="说点什么...100个字符以内" dragonfly="true" onKeyUp="$.Huitextarealength(this,100)"></textarea>
 				<p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
 			</div>
 		</div>
+
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 				<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
@@ -91,38 +113,53 @@ $(function(){
 
 	$("#form-member-add").validate({
 		rules:{
-			username:{
-				required:true,
-				minlength:2,
-				maxlength:16
-			},
-			sex:{
-				required:true,
-			},
-			mobile:{
-				required:true,
-				isMobile:true,
-			},
-			email:{
-				required:true,
-				email:true,
-			},
-			uploadfile:{
-				required:true,
-			},
+			// username:{
+			// 	required:true,
+			// 	minlength:2,
+			// 	maxlength:16
+			// },
+			// sex:{
+			// 	required:true,
+			// },
+			// mobile:{
+			// 	required:true,
+			// 	isMobile:true,
+			// },
+			// email:{
+			// 	required:true,
+			// 	email:true,
+			// },
+			// uploadfile:{
+			// 	required:true,
+			// },
 
 		},
 		onkeyup:false,
 		focusCleanup:true,
 		success:"valid",
 		submitHandler:function(form){
-			console.log(form)
-			alert(222222222222)
-			//$(form).ajaxSubmit();
-			var index = parent.layer.getFrameIndex(window.name);
-			console.log(index)
-			//parent.$('.btn-refresh').click();
-			parent.layer.close(index);
+			// alert(222222222222)
+			// $(form).ajaxSubmit();
+			// var index = parent.layer.getFrameIndex(window.name);
+			// console.log(index)
+			// parent.$('.btn-refresh').click();
+			// parent.layer.close(index);
+			$(form).ajaxSubmit({
+				type: 'post',
+				dataType:'json',
+				url: "{{url('/admin/add')}}" ,
+				success: function(data){
+					console.log(data);
+					if (data.status == 'error') {
+						layer.msg('错误', {icon: 2, time: 1500});
+						return false;
+					}else{
+						layer.msg('添加成功!',{icon:1,time:1500});
+						window.parent.location.reload();
+						return true;
+					}
+				}
+			});
 		}
 	});
 });
